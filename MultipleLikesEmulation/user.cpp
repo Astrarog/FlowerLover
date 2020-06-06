@@ -13,7 +13,11 @@ void User::Answer(Poll& poll, const Variant& var)
     for (User* follower : followers)
     {
         class Answer follower_answer(follower, this, poll, var);
-        (follower->answers)[poll].insert(follower_answer);
+        if ((follower->answers).at(poll))
+        {
+            (follower->answers)[poll].insert(follower_answer);
+        }
+
         // check if we get more ansers for
     }
 }

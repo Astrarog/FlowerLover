@@ -5,16 +5,12 @@
 
 #include "user.hpp"
 
-class Poll;
-
 class Variant
 {
-    const Poll* poll;
-    const std::string explanation;
+    std::string explanation;
 public:
-    Variant(const Poll* p, const std::string& expl): poll(p), explanation(expl) {}
-//    inline void AddVoices(size_t to_add) { count_voices += to_add; }
-//    inline void SubVoices(size_t to_sub) { assert(count_voices>=to_sub); count_voices -= to_sub; }
+    Variant(const std::string& expl): explanation(expl) {}
+    Variant(){}
 };
 
 
@@ -24,8 +20,8 @@ class Poll
     std::map<User*, Answer*> answers;
     const std::string description;
 public:
-    Poll();
-    void ReseiveAnswers(std::set<Answer*>);
+    Poll(const std::string& desc, const std::set<Variant>& vars);
+    void ReceiveAnswers(std::set<Answer*>);
 
 };
 
