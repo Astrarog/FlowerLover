@@ -18,14 +18,15 @@ public:
 
 class Poll
 {
-    std::map<Variant, size_t> choises;
-    std::map<User*, Answer*> answers;
+    std::map<class Variant*, size_t> choises;
+    std::map<class User*, class Answer*> answers;
     const std::string description;
 public:
-    Poll(const std::string& desc, const std::set<Variant>& vars);
-    void Set(User&, Answer&);
-    void Unset(User&, Answer&);
-
+    Poll(const std::string& desc, std::set<class Variant>& vars);
+    void Set(class User *, class Answer *);
+    void Unset(class User *, class Answer *);
+    bool operator== (const Poll& other) const { return this->description==other.description; }
+    bool operator< (const Poll& other) const { return this->description<other.description; }
 };
 
 #endif // POLL_HPP

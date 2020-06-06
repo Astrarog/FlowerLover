@@ -8,40 +8,34 @@
 
 enum struct AnswerType
 {
-    USER,
+    USER=0,
     FOLOWER
 };
+
 
 
 class Answer
 {
 private:
-    User* voice_owner;
-    User* voice_giver;
-    Poll* poll;
-    Variant* variant;
+    class User* voice_owner;
+    class User* voice_giver;
+    class Poll* poll;
+    class Variant* variant;
     AnswerType type_;
 
 public:
-    Answer(User* own, User* giv, Poll& p, Variant& v);
+    Answer(User* own, User* giv, Poll& p, Variant v);
     Answer(const Answer& other) = default;
     AnswerType type() const { return type_; }
-    Variant getVariant() const { return *variant; }
+    class Variant* getVariant() const { return variant; }
+    class Poll* getPoll() const { return poll;}
+    class User* getVoiceOwner() const {return voice_owner;}
+    class User* getVoiceGiver() const {return voice_giver;}
+//    bool operator==(const Answer& other){ return type_==other.type_;}
+    bool operator<(Answer other){ return true;}
 
 };
 
 
-class UserAnswers
-{
-    std::set<Answer> answersFromTrusted;
-    std::map<Variant, size_t> voicesFromTrusted;
-    bool answeredItself = false;
-    Answer userAnswer;
-public:
-    void AddAnswer(const Answer&);
-    void RemoveAnswer(const Answer&);
-    std::pair<bool, Variant> getUserVoice() const;
-    bool isAnsweredItself() const { return answeredItself; }
-};
 
 #endif // ANSWER_HPP
