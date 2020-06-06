@@ -5,3 +5,5 @@ function changeBgImg(){
 }
 
 changeBgImg();
+
+var human = {name: "billy", votes:0};
