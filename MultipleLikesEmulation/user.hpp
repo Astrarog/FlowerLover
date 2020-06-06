@@ -13,10 +13,11 @@ class User;
 class User
 {
 //    std::string id;
+//    User* itself = this;
     std::string name;
     std::set<User*> followers;
     std::set<User*> followed_to;
-    std::map<Poll, std::set<Answer>> answers;
+    std::map<Poll, UserAnswers> answers;
 public:
     User();
     void Follow(User* user) { followed_to.insert(user); (*user).followers.insert(this); }
