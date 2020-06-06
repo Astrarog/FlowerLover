@@ -12,13 +12,16 @@ class User;
 
 class User
 {
-    std::string id;
+//    std::string id;
     std::string name;
-    std::vector<User*> followers;
-    std::vector<User*> followed_to;
-    std::map<Poll, std::set<Answer>> a;
+    std::set<User*> followers;
+    std::set<User*> followed_to;
+    std::map<Poll, std::set<Answer>> answers;
 public:
     User();
+    void Follow(User* user) { followed_to.insert(user); (*user).followers.insert(this); }
+    void Unfollow(User* user) { followed_to.erase(user); (*user).followers.erase(this); }
+    void Answer(Poll&, const Variant&);
 };
 
 #endif // USER_HPP

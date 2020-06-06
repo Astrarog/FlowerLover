@@ -3,6 +3,7 @@
 #include <string>
 
 #include "user.hpp"
+#include "poll.hpp"
 
 enum struct AnswerType
 {
@@ -13,12 +14,18 @@ enum struct AnswerType
 
 class Answer
 {
-    AnswerType type;
+private:
     User* voice_owner;
     User* voice_giver;
-    std::string expalantion;
+    Poll* poll;
+    const Variant* variant;
 public:
-    Answer();
+    const AnswerType type;
+
+
+public:
+    Answer(User* own, User* giv, Poll& p, const Variant& v);
+
 };
 
 #endif // ANSWER_HPP
