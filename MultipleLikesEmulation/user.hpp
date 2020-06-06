@@ -8,7 +8,20 @@
 
 #include "answer.hpp"
 #include "poll.hpp"
-class User;
+
+
+class UserAnswers
+{
+    std::set<Answer> answersFromTrusted;
+    std::map<Variant, size_t> voicesFromTrusted;
+    bool answeredItself = false;
+    Answer userAnswer;
+public:
+    void AddAnswer(const Answer&);
+    void RemoveAnswer(const Answer&);
+    std::pair<bool, Variant> getUserVoice() const;
+    bool isAnsweredItself() const { return answeredItself; }
+};
 
 class User
 {
@@ -24,5 +37,7 @@ public:
     void Unfollow(User* user) { followed_to.erase(user); (*user).followers.erase(this); }
     void Answer(Poll&, const Variant&);
 };
+
+
 
 #endif // USER_HPP

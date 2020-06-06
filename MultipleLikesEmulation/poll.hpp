@@ -11,6 +11,8 @@ class Variant
 public:
     Variant(const std::string& expl): explanation(expl) {}
     Variant(){}
+    bool operator== (const Variant& other) const { return this->explanation==other.explanation; }
+    bool operator<(const Variant& other) const { return this->explanation==other.explanation; }
 };
 
 
@@ -21,7 +23,8 @@ class Poll
     const std::string description;
 public:
     Poll(const std::string& desc, const std::set<Variant>& vars);
-    void ReceiveAnswers(std::set<Answer*>);
+    void Set(User&, Answer&);
+    void Unset(User&, Answer&);
 
 };
 

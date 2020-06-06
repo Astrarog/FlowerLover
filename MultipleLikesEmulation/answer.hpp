@@ -41,6 +41,7 @@ public:
     void AddAnswer(const Answer&);
     void RemoveAnswer(const Answer&);
     std::pair<bool, Variant> getUserVoice() const;
+    bool isAnsweredItself() const { return answeredItself; }
 };
 
 #endif // ANSWER_HPP
