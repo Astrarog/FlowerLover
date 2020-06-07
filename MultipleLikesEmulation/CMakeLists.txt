@@ -9,5 +9,4 @@ add_executable(MultipleLikesEmulation
     main.cpp
     user.hpp user.cpp
     poll.hpp poll.cpp
-    answer.hpp answer.cpp
-    database.hpp database.cpp)
+    answer.hpp answer.cpp)

@@ -9,7 +9,6 @@ using namespace std;
 
 int main()
 {
-    std::set<Variant> vars = {"yes", "no", "maybe"};
-    cout << "Hello World!" << endl;
+    /* Code here*/
     return 0;
 }
